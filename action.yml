@@ -1,13 +1,16 @@
-name: 'Wait'
-description: 'Wait a designated number of milliseconds'
+name: 'File Cancel Action'
+description: 'Cancel GitHub Action workflows based on files in the repository.'
 inputs:
-  milliseconds:  # id of input
-    description: 'number of milliseconds to wait'
-    required: true
-    default: '1000'
-outputs:
-  time: # output will be available to future steps
-    description: 'The message to output'
+  token:
+    description: 'GitHub token used to cancel workflow, defaults to using secrets.GITHUB_TOKEN'
+    required: false
+    default: ${{ github.token }}
+  exists:
+    description: 'Glob or array of globs that cause workflow to cancel if any exist'
+    required: false
+  not-exists:
+    description: 'Glob or array of globs that cause workflow to cancel if none exist'
+    required: false
 runs:
   using: 'node12'
   main: 'dist/index.js'
