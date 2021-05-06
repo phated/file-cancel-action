@@ -6,10 +6,10 @@ inputs:
     required: false
     default: ${{ github.token }}
   exists:
-    description: 'Glob or array of globs that cause workflow to cancel if any exist'
+    description: 'Glob or multiline string of globs that cause workflow to cancel if any exist'
     required: false
   not-exists:
-    description: 'Glob or array of globs that cause workflow to cancel if none exist'
+    description: 'Glob or multiline string of globs that cause workflow to cancel if none exist'
     required: false
 runs:
   using: 'node12'
