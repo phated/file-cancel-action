@@ -22,4 +22,4 @@ jobs:
     - uses: actions/checkout@v2
     - uses: ./
       with:
-        not-exists: 'not-exists.txt'
+        exists: 'not-exists.txt'

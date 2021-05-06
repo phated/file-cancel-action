@@ -15,8 +15,10 @@ async function run() {
     }
 
     if (exists) {
+      console.log(exists);
       const existsGlobber = await glob.create(exists);
       const existsFiles = await existsGlobber.glob();
+      console.log(existsFiles);
       if (existsFiles.length > 0) {
         await octokit.rest.actions.cancelWorkflowRun({
           ...github.context.repo,
@@ -26,8 +28,10 @@ async function run() {
     }
 
     if (notExists) {
+      console.log(notExists);
       const notExistsGlobber = await glob.create(notExists);
       const notExistsFiles = await notExistsGlobber.glob();
+      console.log(notExistsFiles);
       if (notExistsFiles.length === 0) {
         await octokit.rest.actions.cancelWorkflowRun({
           ...github.context.repo,
