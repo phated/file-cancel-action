@@ -1,5 +1,5 @@
 const core = require('@actions/core');
-const github = require('@action/github');
+const github = require('@actions/github');
 const glob = require('@actions/glob');
 
 async function run() {
