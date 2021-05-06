@@ -14,6 +14,8 @@ async function run() {
       throw new Error('Either `exists` or `not-exists` input is required.');
     }
 
+    let cancelled = false;
+
     if (exists) {
       const existsGlobber = await glob.create(exists);
       const existsFiles = await existsGlobber.glob();
@@ -22,7 +24,7 @@ async function run() {
           ...github.context.repo,
           run_id: github.context.runId
         });
-        core.setOutput('cancelled', true);
+        cancelled = true;
       }
     }
 
@@ -34,9 +36,11 @@ async function run() {
           ...github.context.repo,
           run_id: github.context.runId
         });
-        core.setOutput('cancelled', true);
+        cancelled = true
       }
     }
+
+    core.setOutput('cancelled', cancelled);
   } catch (error) {
     core.setFailed(error.message);
   }
