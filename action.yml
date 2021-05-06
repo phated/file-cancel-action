@@ -11,6 +11,9 @@ inputs:
   not-exists:
     description: 'Glob or multiline string of globs that cause workflow to cancel if none exist'
     required: false
+outputs:
+  cancelled:
+    description: 'Boolean (as string) of the cancelled status of the action'
 runs:
   using: 'node12'
   main: 'dist/index.js'
